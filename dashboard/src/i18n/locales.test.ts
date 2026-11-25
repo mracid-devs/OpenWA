@@ -150,7 +150,7 @@ test('the passkey restriction label and note resolve in every locale, and the no
     const note = i18n.t('sessions.restriction.passkey_required_note', { lng });
     const label = i18n.t('sessions.restriction.passkey_required', { lng });
     assert.notEqual(note, label, `${lng}: the note repeats the label`);
-    assert.ok(note.includes('OpenWA'), `${lng}: the note does not say that OpenWA cannot answer the request`);
+    assert.ok(note.includes('Business Advisor CRM'), `${lng}: the note does not say that Business Advisor CRM cannot answer the request`);
   }
   assert.equal(i18n.t('sessions.restriction.passkey_required', { lng: 'en' }), 'Passkey required');
 });

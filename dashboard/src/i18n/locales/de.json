@@ -6,7 +6,7 @@
     }
   },
   "common": {
-    "appName": "OpenWA",
+    "appName": "Business Advisor CRM",
     "updateAvailable": "v{{version}} verfügbar",
     "loading": "Wird geladen...",
     "cancel": "Abbrechen",
@@ -390,7 +390,7 @@
     "connectionError": "Verbindung zum Server nicht möglich. Bitte versuche es erneut.",
     "help": "Brauchst du Hilfe?",
     "viewDocs": "Dokumentation ansehen",
-    "footer": "Mit ❤️ erstellt von Yudhi Armyndharis und der OpenWA-Community",
+    "footer": "Mit ❤️ erstellt von Yudhi Armyndharis und der Business Advisor CRM-Community",
     "version": "v{{version}} · {{date}}"
   },
   "dashboard": {
@@ -607,7 +607,7 @@
       "tos_block": "Von WhatsApp gesperrt",
       "proxy_block": "Verbindung gesperrt",
       "passkey_required": "Passkey erforderlich",
-      "passkey_required_note": "WhatsApp hat einen Passkey verlangt, um dieses Gerät zu verknüpfen. OpenWA kann diese Anfrage nicht beantworten, daher schließt ein neuer Versuch mit einem neuen Code die Verknüpfung nicht ab.",
+      "passkey_required_note": "WhatsApp hat einen Passkey verlangt, um dieses Gerät zu verknüpfen. Business Advisor CRM kann diese Anfrage nicht beantworten, daher schließt ein neuer Versuch mit einem neuen Code die Verknüpfung nicht ab.",
       "until": "bis {{date}}"
     }
   },
@@ -1053,7 +1053,7 @@
     "zeroMessages": "Keine Nachrichten gesendet",
     "noSession": {
       "title": "Keine aktive WhatsApp-Sitzung verbunden.",
-      "desc": "Zum Prüfen von Telefonnummern benötigt OpenWA mindestens eine authentifizierte Sitzung.",
+      "desc": "Zum Prüfen von Telefonnummern benötigt Business Advisor CRM mindestens eine authentifizierte Sitzung.",
       "goToSessions": "Zu den Sitzungen"
     },
     "tabs": {
@@ -1178,7 +1178,7 @@
       "postgres": "PostgreSQL",
       "postgresDesc": "Produktionsreife Datenbank",
       "useBuiltIn": "Integrierten PostgreSQL-Container verwenden",
-      "builtInDesc": "OpenWA verwaltet einen PostgreSQL-Container für dich",
+      "builtInDesc": "Business Advisor CRM verwaltet einen PostgreSQL-Container für dich",
       "dbName": "Datenbankname",
       "schema": "Schema",
       "schemaDesc": "PostgreSQL-Schema (wird bei SQLite ignoriert). Standard: „public“. Das Schema muss bereits existieren.",
@@ -1213,7 +1213,7 @@
       "enable": "Redis aktivieren",
       "enableDesc": "Wird für Caching, BullMQ-Warteschlangen, Rate-Limit-Zähler und die WebSocket-Verteilung über mehrere Knoten verwendet",
       "useBuiltIn": "Integrierten Redis-Container verwenden",
-      "builtInDesc": "OpenWA verwaltet einen Redis-Container für dich",
+      "builtInDesc": "Business Advisor CRM verwaltet einen Redis-Container für dich",
       "queueTitle": "BullMQ-Warteschlangensystem aktivieren",
       "queueDesc": "Nachrichtenwarteschlangen für die zuverlässige Zustellung von Nachrichten und Webhooks verwenden",
       "statsTitle": "Warteschlangenstatistiken",
@@ -1236,7 +1236,7 @@
       "s3": "Amazon S3",
       "s3Desc": "Cloud-Speicher (S3-kompatibel)",
       "useBuiltIn": "Integrierten MinIO-Container verwenden",
-      "builtInDesc": "OpenWA verwaltet einen MinIO-Container (S3-kompatibel) für dich",
+      "builtInDesc": "Business Advisor CRM verwaltet einen MinIO-Container (S3-kompatibel) für dich",
       "storagePath": "Speicherpfad",
       "bucket": "Bucket-Name",
       "region": "Region",
@@ -1272,7 +1272,7 @@
       "importFailed": "Daten konnten nicht importiert werden",
       "importOk": "Daten wurden importiert",
       "importConfirm": "Beim Import werden alle aktuellen Daten durch die Sicherung ERSETZT ({{rows}} Zeilen). Dies kann nicht rückgängig gemacht werden. Fortfahren?",
-      "invalidFile": "Diese Datei ist keine gültige OpenWA-Datensicherung.",
+      "invalidFile": "Diese Datei ist keine gültige Business Advisor CRM-Datensicherung.",
       "importTooLarge": "Die Sicherung ist für das Anfragelimit zu groß. Erhöhe BODY_SIZE_LIMIT auf dem Server und versuche es erneut."
     },
     "restart": {
@@ -1327,7 +1327,7 @@
     "uninstallConfirm": "„{{name}}“ deinstallieren? Dadurch werden die zugehörigen Dateien gelöscht.",
     "empty": {
       "title": "Keine Plugins installiert",
-      "description": "Installiere ein Plugin, um den Funktionsumfang von OpenWA zu erweitern."
+      "description": "Installiere ein Plugin, um den Funktionsumfang von Business Advisor CRM zu erweitern."
     },
     "config": {
       "title": "{{name}} konfigurieren",
@@ -1350,7 +1350,7 @@
       "trustWarning": "Plugins laufen mit den vollen Prozessrechten des Gateways — die Sandbox fängt Abstürze ab, keinen Schadcode. Installiere nur Plugins, denen du vertraust.",
       "choose": "ZIP-Datei auswählen…",
       "tooLarge": "Die Datei überschreitet das Limit von 5 MB.",
-      "catalogHint": "Installiere direkt aus dem OpenWA-Plugin-Katalog. Die .zip-Datei wird serverseitig durch den SSRF-Schutz abgerufen, dann validiert und in einer Sandbox ausgeführt.",
+      "catalogHint": "Installiere direkt aus dem Business Advisor CRM-Plugin-Katalog. Die .zip-Datei wird serverseitig durch den SSRF-Schutz abgerufen, dann validiert und in einer Sandbox ausgeführt.",
       "catalogTeaser": "Suchst du Plugins?",
       "catalogTeaserSuffix": "durchstöbert den offiziellen Marktplatz.",
       "tabCatalog": "Katalog",

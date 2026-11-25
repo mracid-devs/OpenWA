@@ -1,7 +1,7 @@
 # OpenWA Dashboard
 
 <p align="center">
-  <img src="../docs/logo/openwa_logo.webp" alt="OpenWA Logo" width="120"/>
+  <img src="../docs/logo/logo.png" alt="Business Advisor CRM Logo" width="120"/>
 </p>
 
 Modern web dashboard for managing OpenWA WhatsApp API Gateway sessions, webhooks, and infrastructure.

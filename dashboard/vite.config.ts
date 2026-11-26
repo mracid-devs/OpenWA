@@ -25,19 +25,19 @@ export default defineConfig({
     __BUILD_TIME__: JSON.stringify(new Date().toISOString()),
   },
   server: {
-    port: 2886,
+    port: 3001,
     proxy: {
       // With the trailing slash: Vite matches a plain key as a string prefix, so '/api' also
       // captured the SPA route /api-keys and a reload of that page went to the backend.
       '/api/': {
-        target: 'http://localhost:2785',
+        target: 'http://localhost:3000',
         changeOrigin: false,
         secure: false,
       },
       // Proxy the WebSocket (socket.io) transport so the dashboard's real-time
       // chats/sessions streams work against the dev backend.
       '/socket.io': {
-        target: 'http://localhost:2785',
+        target: 'http://localhost:3000',
         ws: true,
         changeOrigin: false,
       },

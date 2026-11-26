@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback, useRef, useMemo, useLayoutEffect } fr
 import { useQuery, useQueryClient, type QueryClient } from '@tanstack/react-query';
 import { Trans, useTranslation } from 'react-i18next';
 import { nextReconnectState } from '../utils/reconnectState';
+import { setChatTag, useOperatorSettings } from '../utils/operatorSettings';
 import { applyIncomingToChatList, promoteChatWithSnippet } from '../utils/chatList';
 import {
   applyChatListFilter,
@@ -215,6 +216,7 @@ export function Chats() {
   useDocumentTitle(t('nav.chats'));
   const { error: showErrorToast, warning: showWarningToast, success: showSuccessToast } = useToastActions();
   const { canWrite, engineType } = useRole();
+  const operator = useOperatorSettings();
 
   // Sessions list & active session
   // Every listed session, ready or not: the switcher shows the others with their state.
@@ -2138,6 +2140,14 @@ export function Chats() {
     onClear: canWrite ? chat => setConfirmAction({ kind: 'clear', chat }) : undefined,
     onDelete: canWrite ? chat => setConfirmAction({ kind: 'delete', chat }) : undefined,
     isBlocked,
+    // Status tags live in this browser, but a read-only key's menu stays read-only like the rest of it.
+    tags: canWrite
+      ? {
+          list: operator.tags,
+          current: chat => operator.assignments[chat.id],
+          onSet: (chat, tagId) => setChatTag(chat.id, tagId),
+        }
+      : undefined,
   };
 
   // Leaving a group, clearing a chat and deleting one all run from the confirmation dialog. On success the

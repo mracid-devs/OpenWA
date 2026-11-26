@@ -3877,3 +3877,25 @@
     border: 1px solid ButtonText;
   }
 }
+
+/* Status tag (Pending, Completed, ...): the colour is the operator's, set inline; the text colour follows it. */
+.chats-page .chat-tag-badge {
+  flex: 0 1 auto;
+  max-width: 9rem;
+  padding: 0.0625rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  line-height: 1.4;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.chats-page .chat-tag-dot {
+  display: inline-block;
+  width: 0.875rem;
+  height: 0.875rem;
+  border-radius: 50%;
+  flex: none;
+}

@@ -67,6 +67,8 @@
     "templates": "Şablonlar",
     "apiKeys": "API Anahtarları",
     "messageTester": "Mesaj Test Aracı",
+    "broadcast": "Toplu Mesaj",
+    "settings": "Ayarlar",
     "infrastructure": "Altyapı",
     "plugins": "Eklentiler",
     "logs": "Kayıtlar (Logs)"
@@ -373,6 +375,9 @@
       "noDateHits": "O gün yüklenmiş mesaj yok",
       "notLoaded": "Bu sohbette yüklenmiş mesajlardan daha eski. Daha eski mesajları yüklemek için sohbette yukarı kaydırın.",
       "open": "Sohbette ara"
+    },
+    "tags": {
+      "clear": "Etiketi kaldır"
     }
   },
   "errorBoundary": {
@@ -388,9 +393,7 @@
     "connecting": "Bağlanıyor...",
     "invalidKey": "Geçersiz API anahtarı",
     "connectionError": "Sunucuya bağlanılamadı. Lütfen tekrar deneyin.",
-    "help": "Yardıma mı ihtiyacınız var?",
-    "viewDocs": "Dokümantasyonu Görüntüle",
-    "footer": "Yudhi Armyndharis ve Business Advisor CRM Topluluğu tarafından ❤️ ile yapılmıştır",
+    "footer": "Developed by Alpha Eye Technologies Pvt Ltd",
     "version": "v{{version}} · {{date}}"
   },
   "dashboard": {
@@ -1477,5 +1480,58 @@
       "current": "Bu oturum"
     },
     "loading": "Aranıyor…"
+  },
+  "broadcast": {
+    "title": "Toplu Mesaj",
+    "subtitle": "Birden fazla WhatsApp grubuna tek mesaj gönderin",
+    "noSession": "Bağlı oturum yok. Önce bir oturum başlatın.",
+    "session": "Oturum",
+    "groups": "Gruplar",
+    "reload": "Yeniden yükle",
+    "search": "Grup ara",
+    "selectAll": "Gösterilenlerin tümünü seç",
+    "loading": "Gruplar yükleniyor...",
+    "loadFailed": "Gruplar yüklenemedi.",
+    "noGroups": "Grup bulunamadı.",
+    "message": "Mesaj",
+    "messagePlaceholder": "Seçilen her gruba gönderilecek mesajı yazın",
+    "delay": "Gruplar arası bekleme",
+    "delaySeconds": "{{n}} saniye",
+    "warning": "Aynı mesajı çok sayıda gruba hızlıca göndermek WhatsApp numarasının kısıtlanmasına yol açabilir. Uzun listelerde daha uzun bekleme kullanın.",
+    "send": "{{n}} gruba gönder",
+    "stop": "Durdur",
+    "confirm": "Bu mesaj {{n}} gruba gönderilsin mi?",
+    "results": "Sonuçlar: {{total}} içinde {{sent}} gönderildi, {{failed}} başarısız",
+    "doneTitle": "Toplu mesaj tamamlandı",
+    "doneAll": "{{n}} gruba gönderildi",
+    "doneSome": "{{sent}} gönderildi, {{failed}} başarısız veya atlandı",
+    "maxGroups": "Toplu mesaj başına en fazla {{n}} grup.",
+    "background": "Toplu mesaj sunucuda çalışır, bu sekmeyi kapatsanız da devam eder. İlerlemeyi görmek için bu sayfayı yeniden açın.",
+    "started": "Toplu mesaj başlatıldı",
+    "startedBody": "Arka planda gönderiliyor.",
+    "startFailed": "Toplu mesaj başlatılamadı",
+    "stopFailed": "Toplu mesaj durdurulamadı",
+    "clear": "Sonuçları temizle"
+  },
+  "settings": {
+    "title": "Ayarlar",
+    "subtitle": "Yanıtlardaki adınız ve sohbetler için durum etiketleri",
+    "usernameTitle": "Kullanıcı adı",
+    "usernameHelp": "Adınız, Sohbetler sayfasından gönderdiğiniz her yanıtın başına eklenir; müşteriler kimin yanıtladığını görür.",
+    "username": "Adınız",
+    "save": "Kaydet",
+    "saved": "Ayarlar kaydedildi",
+    "preview": "Önizleme",
+    "previewText": "Merhaba, nasıl yardımcı olabilirim?",
+    "tagsTitle": "Durum etiketleri",
+    "tagsHelp": "Sohbetleri ve grupları Beklemede veya Tamamlandı gibi bir durum ve renkle etiketleyin. Etiketi Sohbetler'deki sohbet menüsünden ayarlayın.",
+    "tagColor": "Etiket rengi",
+    "tagName": "Etiket adı",
+    "untitledTag": "Adsız",
+    "removeTag": "Etiketi kaldır",
+    "addTag": "Etiket ekle",
+    "newTag": "Yeni etiket",
+    "resetTags": "Varsayılanlara sıfırla",
+    "browserOnly": "Kullanıcı adı ve etiketler yalnızca bu tarayıcıda saklanır. Diğer bilgisayarlarla veya kullanıcılarla paylaşılmaz."
   }
 }

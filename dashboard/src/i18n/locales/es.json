@@ -68,6 +68,8 @@
     "webhooks": "Webhooks",
     "apiKeys": "Claves API",
     "messageTester": "Probador de mensajes",
+    "broadcast": "Difusión",
+    "settings": "Configuración",
     "infrastructure": "Infraestructura",
     "plugins": "Plugins",
     "logs": "Registros",
@@ -378,6 +380,9 @@
       "noDateHits": "No hay mensajes cargados ese día",
       "notLoaded": "Es anterior a los mensajes cargados en este chat. Desplázate hacia arriba en el chat para cargar mensajes anteriores.",
       "open": "Buscar en el chat"
+    },
+    "tags": {
+      "clear": "Quitar etiqueta"
     }
   },
   "errorBoundary": {
@@ -393,9 +398,7 @@
     "connecting": "Conectando...",
     "invalidKey": "Clave API no válida",
     "connectionError": "No se puede conectar al servidor. Por favor, inténtalo de nuevo.",
-    "help": "¿Necesitas ayuda?",
-    "viewDocs": "Ver documentación",
-    "footer": "Hecho con ❤️ por Yudhi Armyndharis y la comunidad Business Advisor CRM",
+    "footer": "Developed by Alpha Eye Technologies Pvt Ltd",
     "version": "v{{version}} · {{date}}"
   },
   "dashboard": {
@@ -1486,5 +1489,58 @@
       "current": "Esta sesión"
     },
     "loading": "Buscando…"
+  },
+  "broadcast": {
+    "title": "Difusión",
+    "subtitle": "Envía un mensaje a varios grupos de WhatsApp",
+    "noSession": "No hay sesión conectada. Inicia una sesión primero.",
+    "session": "Sesión",
+    "groups": "Grupos",
+    "reload": "Recargar",
+    "search": "Buscar grupos",
+    "selectAll": "Seleccionar todos los mostrados",
+    "loading": "Cargando grupos...",
+    "loadFailed": "No se pudieron cargar los grupos.",
+    "noGroups": "No se encontraron grupos.",
+    "message": "Mensaje",
+    "messagePlaceholder": "Escribe el mensaje para enviar a cada grupo seleccionado",
+    "delay": "Pausa entre grupos",
+    "delaySeconds": "{{n}} segundos",
+    "warning": "Enviar el mismo mensaje a muchos grupos rápidamente puede hacer que se restrinja un número de WhatsApp. Usa una pausa mayor en listas largas.",
+    "send": "Enviar a {{n}} grupos",
+    "stop": "Detener",
+    "confirm": "¿Enviar este mensaje a {{n}} grupos?",
+    "results": "Resultados: {{sent}} enviados, {{failed}} fallidos de {{total}}",
+    "doneTitle": "Difusión terminada",
+    "doneAll": "Enviado a {{n}} grupos",
+    "doneSome": "{{sent}} enviados, {{failed}} fallidos u omitidos",
+    "maxGroups": "Hasta {{n}} grupos por difusión.",
+    "background": "La difusión se ejecuta en el servidor, así que continúa si cierras esta pestaña. Vuelve a abrir esta página para ver el progreso.",
+    "started": "Difusión iniciada",
+    "startedBody": "Enviando en segundo plano.",
+    "startFailed": "No se pudo iniciar la difusión",
+    "stopFailed": "No se pudo detener la difusión",
+    "clear": "Borrar resultados"
+  },
+  "settings": {
+    "title": "Configuración",
+    "subtitle": "Tu nombre en las respuestas y las etiquetas de estado de los chats",
+    "usernameTitle": "Nombre de usuario",
+    "usernameHelp": "Tu nombre se añade al inicio de cada respuesta que envías desde la página Chats, para que los clientes vean quién respondió.",
+    "username": "Tu nombre",
+    "save": "Guardar",
+    "saved": "Configuración guardada",
+    "preview": "Vista previa",
+    "previewText": "Hola, ¿en qué puedo ayudarte?",
+    "tagsTitle": "Etiquetas de estado",
+    "tagsHelp": "Etiqueta chats y grupos con un estado y un color, por ejemplo Pendiente o Completado. Asigna una etiqueta desde el menú del chat en Chats.",
+    "tagColor": "Color de la etiqueta",
+    "tagName": "Nombre de la etiqueta",
+    "untitledTag": "Sin título",
+    "removeTag": "Quitar etiqueta",
+    "addTag": "Añadir etiqueta",
+    "newTag": "Nueva etiqueta",
+    "resetTags": "Restablecer valores predeterminados",
+    "browserOnly": "El nombre de usuario y las etiquetas se guardan solo en este navegador. No se comparten con otros equipos ni usuarios."
   }
 }

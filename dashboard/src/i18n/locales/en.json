@@ -67,6 +67,8 @@
     "templates": "Templates",
     "apiKeys": "API Keys",
     "messageTester": "Message Tester",
+    "broadcast": "Broadcast",
+    "settings": "Settings",
     "infrastructure": "Infrastructure",
     "plugins": "Plugins",
     "logs": "Logs"
@@ -373,6 +375,9 @@
       "noDateHits": "No loaded messages on that day",
       "notLoaded": "Older than the messages loaded in this chat. Scroll up in the chat to load older messages.",
       "open": "Search in chat"
+    },
+    "tags": {
+      "clear": "Remove tag"
     }
   },
   "errorBoundary": {
@@ -388,9 +393,7 @@
     "connecting": "Connecting...",
     "invalidKey": "Invalid API key",
     "connectionError": "Unable to connect to server. Please try again.",
-    "help": "Need help?",
-    "viewDocs": "View Documentation",
-    "footer": "Made with ❤️ by Yudhi Armyndharis and the Business Advisor CRM Community",
+    "footer": "Developed by Alpha Eye Technologies Pvt Ltd",
     "version": "v{{version}} · {{date}}"
   },
   "dashboard": {
@@ -1477,5 +1480,58 @@
       "current": "This session"
     },
     "loading": "Searching…"
+  },
+  "broadcast": {
+    "title": "Broadcast",
+    "subtitle": "Send one message to multiple WhatsApp groups",
+    "noSession": "No connected session. Start a session first.",
+    "session": "Session",
+    "groups": "Groups",
+    "reload": "Reload",
+    "search": "Search groups",
+    "selectAll": "Select all shown",
+    "loading": "Loading groups...",
+    "loadFailed": "Could not load groups.",
+    "noGroups": "No groups found.",
+    "message": "Message",
+    "messagePlaceholder": "Type the message to send to every selected group",
+    "delay": "Delay between groups",
+    "delaySeconds": "{{n}} seconds",
+    "warning": "Sending the same message to many groups quickly can get a WhatsApp number restricted. Use a longer delay for larger lists.",
+    "send": "Send to {{n}} groups",
+    "stop": "Stop",
+    "confirm": "Send this message to {{n}} groups?",
+    "results": "Results: {{sent}} sent, {{failed}} failed of {{total}}",
+    "doneTitle": "Broadcast finished",
+    "doneAll": "Sent to {{n}} groups",
+    "doneSome": "{{sent}} sent, {{failed}} failed or skipped",
+    "maxGroups": "Up to {{n}} groups per broadcast.",
+    "background": "The broadcast runs on the server, so it keeps going if you close this tab. Reopen this page to see its progress.",
+    "started": "Broadcast started",
+    "startedBody": "Sending in the background.",
+    "startFailed": "Could not start the broadcast",
+    "stopFailed": "Could not stop the broadcast",
+    "clear": "Clear results"
+  },
+  "settings": {
+    "title": "Settings",
+    "subtitle": "Your name on replies and the status tags for chats",
+    "usernameTitle": "Username",
+    "usernameHelp": "Your name is added at the start of every reply you send from the Chats page, so customers see who answered.",
+    "username": "Your name",
+    "save": "Save",
+    "saved": "Settings saved",
+    "preview": "Preview",
+    "previewText": "Hello, how can I help?",
+    "tagsTitle": "Status tags",
+    "tagsHelp": "Tag chats and groups with a status and colour, for example Pending or Completed. Set a tag from the chat's menu in Chats.",
+    "tagColor": "Tag colour",
+    "tagName": "Tag name",
+    "untitledTag": "Untitled",
+    "removeTag": "Remove tag",
+    "addTag": "Add tag",
+    "newTag": "New tag",
+    "resetTags": "Reset to defaults",
+    "browserOnly": "The username and tags are saved in this browser only. They are not shared with other computers or users."
   }
 }

@@ -1,3 +1,4 @@
+import { prefixWithUsername } from '../../utils/operatorSettings';
 import {
   useCallback,
   useEffect,
@@ -492,7 +493,8 @@ function ChatComposer({
 
     if (sending || textTooLong || templateUnfilled) return;
 
-    const textToSend = messageInput.trim();
+    // The operator's name from Settings leads every reply that carries text, so the customer sees who answered.
+    const textToSend = prefixWithUsername(messageInput.trim());
     if (!textToSend && !attachment) return;
     // The text the picker was closed for, if it goes out in this send: a refusal gives it back as it was.
     const closedAtSend = slashClosedFor === messageInput;

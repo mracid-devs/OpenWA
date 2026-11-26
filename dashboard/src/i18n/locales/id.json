@@ -67,6 +67,8 @@
     "templates": "Templat",
     "apiKeys": "Kunci API",
     "messageTester": "Penguji Pesan",
+    "broadcast": "Siaran",
+    "settings": "Pengaturan",
     "infrastructure": "Infrastruktur",
     "plugins": "Plugin",
     "logs": "Log"
@@ -373,6 +375,9 @@
       "noDateHits": "Tidak ada pesan termuat pada hari itu",
       "notLoaded": "Lebih lama dari pesan yang termuat di chat ini. Gulir ke atas di chat untuk memuat pesan lama.",
       "open": "Cari di chat"
+    },
+    "tags": {
+      "clear": "Hapus tag"
     }
   },
   "errorBoundary": {
@@ -388,9 +393,7 @@
     "connecting": "Menghubungkan...",
     "invalidKey": "Kunci API tidak valid",
     "connectionError": "Tidak dapat terhubung ke server. Silakan coba lagi.",
-    "help": "Butuh bantuan?",
-    "viewDocs": "Lihat Dokumentasi",
-    "footer": "Dibuat dengan ❤️ oleh Yudhi Armyndharis dan Komunitas Business Advisor CRM",
+    "footer": "Developed by Alpha Eye Technologies Pvt Ltd",
     "version": "v{{version}} · {{date}}"
   },
   "dashboard": {
@@ -1477,5 +1480,58 @@
       "current": "Sesi ini"
     },
     "loading": "Mencari…"
+  },
+  "broadcast": {
+    "title": "Siaran",
+    "subtitle": "Kirim satu pesan ke beberapa grup WhatsApp",
+    "noSession": "Tidak ada sesi terhubung. Mulai sesi terlebih dahulu.",
+    "session": "Sesi",
+    "groups": "Grup",
+    "reload": "Muat ulang",
+    "search": "Cari grup",
+    "selectAll": "Pilih semua yang ditampilkan",
+    "loading": "Memuat grup...",
+    "loadFailed": "Grup tidak dapat dimuat.",
+    "noGroups": "Grup tidak ditemukan.",
+    "message": "Pesan",
+    "messagePlaceholder": "Ketik pesan yang akan dikirim ke setiap grup terpilih",
+    "delay": "Jeda antar grup",
+    "delaySeconds": "{{n}} detik",
+    "warning": "Mengirim pesan yang sama ke banyak grup dengan cepat dapat membuat nomor WhatsApp dibatasi. Gunakan jeda lebih lama untuk daftar panjang.",
+    "send": "Kirim ke {{n}} grup",
+    "stop": "Hentikan",
+    "confirm": "Kirim pesan ini ke {{n}} grup?",
+    "results": "Hasil: {{sent}} terkirim, {{failed}} gagal dari {{total}}",
+    "doneTitle": "Siaran selesai",
+    "doneAll": "Terkirim ke {{n}} grup",
+    "doneSome": "{{sent}} terkirim, {{failed}} gagal atau dilewati",
+    "maxGroups": "Hingga {{n}} grup per siaran.",
+    "background": "Siaran berjalan di server, jadi tetap berlanjut jika Anda menutup tab ini. Buka halaman ini lagi untuk melihat progresnya.",
+    "started": "Siaran dimulai",
+    "startedBody": "Mengirim di latar belakang.",
+    "startFailed": "Siaran tidak dapat dimulai",
+    "stopFailed": "Siaran tidak dapat dihentikan",
+    "clear": "Hapus hasil"
+  },
+  "settings": {
+    "title": "Pengaturan",
+    "subtitle": "Nama Anda pada balasan dan tag status untuk obrolan",
+    "usernameTitle": "Nama pengguna",
+    "usernameHelp": "Nama Anda ditambahkan di awal setiap balasan yang dikirim dari halaman Obrolan, agar pelanggan tahu siapa yang membalas.",
+    "username": "Nama Anda",
+    "save": "Simpan",
+    "saved": "Pengaturan disimpan",
+    "preview": "Pratinjau",
+    "previewText": "Halo, ada yang bisa saya bantu?",
+    "tagsTitle": "Tag status",
+    "tagsHelp": "Beri obrolan dan grup tag status dan warna, misalnya Tertunda atau Selesai. Atur tag dari menu obrolan di Obrolan.",
+    "tagColor": "Warna tag",
+    "tagName": "Nama tag",
+    "untitledTag": "Tanpa judul",
+    "removeTag": "Hapus tag",
+    "addTag": "Tambah tag",
+    "newTag": "Tag baru",
+    "resetTags": "Kembalikan ke default",
+    "browserOnly": "Nama pengguna dan tag hanya disimpan di browser ini. Tidak dibagikan ke komputer atau pengguna lain."
   }
 }

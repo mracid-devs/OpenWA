@@ -67,6 +67,8 @@
     "templates": "Vorlagen",
     "apiKeys": "API-Schlüssel",
     "messageTester": "Nachrichtentester",
+    "broadcast": "Rundsendung",
+    "settings": "Einstellungen",
     "infrastructure": "Infrastruktur",
     "plugins": "Plugins",
     "logs": "Protokolle"
@@ -373,6 +375,9 @@
       "noDateHits": "Keine geladenen Nachrichten an diesem Tag",
       "notLoaded": "Älter als die in diesem Chat geladenen Nachrichten. Im Chat nach oben scrollen, um ältere Nachrichten zu laden.",
       "open": "Im Chat suchen"
+    },
+    "tags": {
+      "clear": "Tag entfernen"
     }
   },
   "errorBoundary": {
@@ -388,9 +393,7 @@
     "connecting": "Verbindung wird hergestellt...",
     "invalidKey": "Ungültiger API-Schlüssel",
     "connectionError": "Verbindung zum Server nicht möglich. Bitte versuche es erneut.",
-    "help": "Brauchst du Hilfe?",
-    "viewDocs": "Dokumentation ansehen",
-    "footer": "Mit ❤️ erstellt von Yudhi Armyndharis und der Business Advisor CRM-Community",
+    "footer": "Developed by Alpha Eye Technologies Pvt Ltd",
     "version": "v{{version}} · {{date}}"
   },
   "dashboard": {
@@ -1477,5 +1480,58 @@
       "current": "Diese Sitzung"
     },
     "loading": "Suche läuft…"
+  },
+  "broadcast": {
+    "title": "Rundsendung",
+    "subtitle": "Eine Nachricht an mehrere WhatsApp-Gruppen senden",
+    "noSession": "Keine verbundene Sitzung. Starte zuerst eine Sitzung.",
+    "session": "Sitzung",
+    "groups": "Gruppen",
+    "reload": "Neu laden",
+    "search": "Gruppen suchen",
+    "selectAll": "Alle angezeigten auswählen",
+    "loading": "Gruppen werden geladen...",
+    "loadFailed": "Gruppen konnten nicht geladen werden.",
+    "noGroups": "Keine Gruppen gefunden.",
+    "message": "Nachricht",
+    "messagePlaceholder": "Nachricht eingeben, die an jede ausgewählte Gruppe geht",
+    "delay": "Pause zwischen Gruppen",
+    "delaySeconds": "{{n}} Sekunden",
+    "warning": "Dieselbe Nachricht schnell an viele Gruppen zu senden, kann zur Einschränkung einer WhatsApp-Nummer führen. Nimm bei langen Listen eine längere Pause.",
+    "send": "An {{n}} Gruppen senden",
+    "stop": "Stopp",
+    "confirm": "Diese Nachricht an {{n}} Gruppen senden?",
+    "results": "Ergebnis: {{sent}} gesendet, {{failed}} fehlgeschlagen von {{total}}",
+    "doneTitle": "Rundsendung beendet",
+    "doneAll": "An {{n}} Gruppen gesendet",
+    "doneSome": "{{sent}} gesendet, {{failed}} fehlgeschlagen oder übersprungen",
+    "maxGroups": "Bis zu {{n}} Gruppen pro Rundsendung.",
+    "background": "Die Rundsendung läuft auf dem Server weiter, auch wenn du diesen Tab schließt. Öffne diese Seite erneut, um den Fortschritt zu sehen.",
+    "started": "Rundsendung gestartet",
+    "startedBody": "Wird im Hintergrund gesendet.",
+    "startFailed": "Rundsendung konnte nicht gestartet werden",
+    "stopFailed": "Rundsendung konnte nicht gestoppt werden",
+    "clear": "Ergebnisse löschen"
+  },
+  "settings": {
+    "title": "Einstellungen",
+    "subtitle": "Dein Name bei Antworten und die Statustags für Chats",
+    "usernameTitle": "Benutzername",
+    "usernameHelp": "Dein Name steht am Anfang jeder Antwort, die du auf der Chats-Seite sendest, damit Kunden sehen, wer geantwortet hat.",
+    "username": "Dein Name",
+    "save": "Speichern",
+    "saved": "Einstellungen gespeichert",
+    "preview": "Vorschau",
+    "previewText": "Hallo, wie kann ich helfen?",
+    "tagsTitle": "Statustags",
+    "tagsHelp": "Versieh Chats und Gruppen mit einem Status und einer Farbe, z. B. Ausstehend oder Erledigt. Setze ein Tag über das Chat-Menü unter Chats.",
+    "tagColor": "Tag-Farbe",
+    "tagName": "Tag-Name",
+    "untitledTag": "Ohne Namen",
+    "removeTag": "Tag entfernen",
+    "addTag": "Tag hinzufügen",
+    "newTag": "Neues Tag",
+    "resetTags": "Auf Standard zurücksetzen",
+    "browserOnly": "Benutzername und Tags werden nur in diesem Browser gespeichert und nicht mit anderen Computern oder Benutzern geteilt."
   }
 }

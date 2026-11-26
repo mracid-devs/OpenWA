@@ -69,6 +69,8 @@
     "templates": "Templates",
     "apiKeys": "Clés API",
     "messageTester": "Testeur de messages",
+    "broadcast": "Diffusion",
+    "settings": "Paramètres",
     "infrastructure": "Infrastructure",
     "plugins": "Plugins",
     "logs": "Journaux"
@@ -378,6 +380,9 @@
       "noDateHits": "Aucun message chargé ce jour-là",
       "notLoaded": "Plus ancien que les messages chargés dans cette discussion. Faites défiler la discussion vers le haut pour charger des messages plus anciens.",
       "open": "Rechercher dans la discussion"
+    },
+    "tags": {
+      "clear": "Retirer l'étiquette"
     }
   },
   "errorBoundary": {
@@ -393,9 +398,7 @@
     "connecting": "Connexion...",
     "invalidKey": "Clé API invalide",
     "connectionError": "Impossible de se connecter au serveur. Veuillez réessayer.",
-    "help": "Besoin d'aide ?",
-    "viewDocs": "Voir la documentation",
-    "footer": "Fait avec ❤️ par Yudhi Armyndharis et la communauté Business Advisor CRM",
+    "footer": "Developed by Alpha Eye Technologies Pvt Ltd",
     "version": "v{{version}} · {{date}}"
   },
   "dashboard": {
@@ -1486,5 +1489,58 @@
       "current": "Cette session"
     },
     "loading": "Recherche…"
+  },
+  "broadcast": {
+    "title": "Diffusion",
+    "subtitle": "Envoyer un message à plusieurs groupes WhatsApp",
+    "noSession": "Aucune session connectée. Démarrez d'abord une session.",
+    "session": "Session",
+    "groups": "Groupes",
+    "reload": "Recharger",
+    "search": "Rechercher des groupes",
+    "selectAll": "Tout sélectionner (affichés)",
+    "loading": "Chargement des groupes...",
+    "loadFailed": "Impossible de charger les groupes.",
+    "noGroups": "Aucun groupe trouvé.",
+    "message": "Message",
+    "messagePlaceholder": "Saisissez le message à envoyer à chaque groupe sélectionné",
+    "delay": "Délai entre les groupes",
+    "delaySeconds": "{{n}} secondes",
+    "warning": "Envoyer rapidement le même message à de nombreux groupes peut faire restreindre un numéro WhatsApp. Utilisez un délai plus long pour les longues listes.",
+    "send": "Envoyer à {{n}} groupes",
+    "stop": "Arrêter",
+    "confirm": "Envoyer ce message à {{n}} groupes ?",
+    "results": "Résultats : {{sent}} envoyés, {{failed}} échoués sur {{total}}",
+    "doneTitle": "Diffusion terminée",
+    "doneAll": "Envoyé à {{n}} groupes",
+    "doneSome": "{{sent}} envoyés, {{failed}} échoués ou ignorés",
+    "maxGroups": "Jusqu'à {{n}} groupes par diffusion.",
+    "background": "La diffusion s'exécute sur le serveur : elle continue si vous fermez cet onglet. Rouvrez cette page pour voir sa progression.",
+    "started": "Diffusion démarrée",
+    "startedBody": "Envoi en arrière-plan.",
+    "startFailed": "Impossible de démarrer la diffusion",
+    "stopFailed": "Impossible d'arrêter la diffusion",
+    "clear": "Effacer les résultats"
+  },
+  "settings": {
+    "title": "Paramètres",
+    "subtitle": "Votre nom sur les réponses et les étiquettes de statut des discussions",
+    "usernameTitle": "Nom d'utilisateur",
+    "usernameHelp": "Votre nom est ajouté au début de chaque réponse envoyée depuis la page Discussions, pour que les clients voient qui a répondu.",
+    "username": "Votre nom",
+    "save": "Enregistrer",
+    "saved": "Paramètres enregistrés",
+    "preview": "Aperçu",
+    "previewText": "Bonjour, comment puis-je vous aider ?",
+    "tagsTitle": "Étiquettes de statut",
+    "tagsHelp": "Marquez les discussions et groupes avec un statut et une couleur, par exemple En attente ou Terminé. Définissez une étiquette depuis le menu de la discussion.",
+    "tagColor": "Couleur de l'étiquette",
+    "tagName": "Nom de l'étiquette",
+    "untitledTag": "Sans titre",
+    "removeTag": "Supprimer l'étiquette",
+    "addTag": "Ajouter une étiquette",
+    "newTag": "Nouvelle étiquette",
+    "resetTags": "Rétablir les valeurs par défaut",
+    "browserOnly": "Le nom d'utilisateur et les étiquettes sont enregistrés uniquement dans ce navigateur. Ils ne sont pas partagés avec d'autres ordinateurs ou utilisateurs."
   }
 }

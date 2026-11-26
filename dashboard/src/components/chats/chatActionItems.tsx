@@ -10,6 +10,7 @@ import {
   LogOut,
   Mail,
   Pin,
+  Tag,
   PinOff,
   ShieldCheck,
   Trash2,
@@ -17,6 +18,7 @@ import {
   UserPen,
 } from 'lucide-react';
 import type { Chat } from '../../services/api';
+import type { ChatTag } from '../../utils/operatorSettings';
 
 /** What a chat can be asked to do from its row or its room. Every one but the info views is an operator route. */
 export interface ChatRowActions {
@@ -41,6 +43,12 @@ export interface ChatRowActions {
   onDelete?: (chat: Chat) => void;
   /** Whether the session's blocklist holds this chat's contact. */
   isBlocked?: (chat: Chat) => boolean;
+  /** Status tags (kept in this browser): the tags on offer, the chat's current one, and how to set or clear it. */
+  tags?: {
+    list: ChatTag[];
+    current: (chat: Chat) => string | undefined;
+    onSet: (chat: Chat, tagId: string | null) => void;
+  };
 }
 
 export interface ChatActionItem {
@@ -94,6 +102,21 @@ export function chatActionItems(chat: Chat, actions: ChatRowActions, t: (key: st
     icon: chat.archived ? <ArchiveRestore size={18} /> : <Archive size={18} />,
     label: chat.archived ? t('chats.rowActions.unarchive') : t('chats.rowActions.archive'),
   });
+  if (actions.tags) {
+    const { list, current, onSet } = actions.tags;
+    const now = current(chat);
+    for (const tag of list) {
+      items.push({
+        key: `tag-${tag.id}`,
+        icon: <span className="chat-tag-dot" style={{ background: tag.color }} aria-hidden="true" />,
+        label: now === tag.id ? `${tag.name} \u2713` : tag.name,
+        run: c => onSet(c, now === tag.id ? null : tag.id),
+      });
+    }
+    if (now) {
+      items.push({ key: 'tag-clear', icon: <Tag size={18} />, label: t('chats.tags.clear'), run: c => onSet(c, null) });
+    }
+  }
   // A chat already unread has nothing to mark.
   if (chat.unreadCount === 0) {
     add(actions.onMarkUnread, { key: 'unread', icon: <Mail size={18} />, label: t('chats.rowActions.markUnread') });

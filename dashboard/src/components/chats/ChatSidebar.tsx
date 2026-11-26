@@ -1,3 +1,4 @@
+import { readableTextColor, useOperatorSettings } from '../../utils/operatorSettings';
 import { memo, useCallback, useRef, useState, type ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
@@ -116,6 +117,8 @@ const ChatListRow = memo(
     onMenuOpenChange,
   }: ChatListRowProps) {
     const { t } = useTranslation();
+    const operator = useOperatorSettings();
+    const chatTag = operator.tags.find(tag => tag.id === operator.assignments[chat.id]);
     const onOpenChange = useCallback((open: boolean) => onMenuOpenChange(chat.id, open), [onMenuOpenChange, chat.id]);
     // Contact shares store the raw vCard in lastMessage; show name/phone (or a label) instead.
     const lastSnippet =
@@ -157,6 +160,15 @@ const ChatListRow = memo(
             </span>
             {chat.kind !== 'individual' && chat.kind !== 'unknown' && (
               <span className={`chat-kind-badge kind-${chat.kind}`}>{t(`chats.kind.${chat.kind}`)}</span>
+            )}
+            {chatTag && (
+              <span
+                className="chat-tag-badge"
+                style={{ background: chatTag.color, color: readableTextColor(chatTag.color) }}
+                title={chatTag.name}
+              >
+                {chatTag.name}
+              </span>
             )}
             {/* Ternary, not `&&`: a chat with no messages carries timestamp 0, and React
                 renders the number 0 as text — so `0 && <span/>` painted a literal "0"

@@ -67,6 +67,8 @@
     "templates": "模板",
     "apiKeys": "API 密钥",
     "messageTester": "消息测试器",
+    "broadcast": "群发",
+    "settings": "设置",
     "infrastructure": "基础设施",
     "plugins": "插件",
     "logs": "日志"
@@ -373,6 +375,9 @@
       "noDateHits": "当天没有已加载的消息",
       "notLoaded": "早于此聊天中已加载的消息。在聊天中向上滚动可加载更早的消息。",
       "open": "在聊天中搜索"
+    },
+    "tags": {
+      "clear": "移除标签"
     }
   },
   "errorBoundary": {
@@ -388,9 +393,7 @@
     "connecting": "正在连接...",
     "invalidKey": "API 密钥无效",
     "connectionError": "无法连接到服务器。请重试。",
-    "help": "需要帮助？",
-    "viewDocs": "查看文档",
-    "footer": "由 Yudhi Armyndharis 和 Business Advisor CRM 社区用 ❤️ 打造",
+    "footer": "Developed by Alpha Eye Technologies Pvt Ltd",
     "version": "v{{version}} · {{date}}"
   },
   "dashboard": {
@@ -1477,5 +1480,58 @@
       "current": "当前会话"
     },
     "loading": "搜索中…"
+  },
+  "broadcast": {
+    "title": "群发",
+    "subtitle": "向多个 WhatsApp 群组发送同一条消息",
+    "noSession": "没有已连接的会话。请先启动会话。",
+    "session": "会话",
+    "groups": "群组",
+    "reload": "重新加载",
+    "search": "搜索群组",
+    "selectAll": "全选显示的群组",
+    "loading": "正在加载群组...",
+    "loadFailed": "无法加载群组。",
+    "noGroups": "未找到群组。",
+    "message": "消息",
+    "messagePlaceholder": "输入要发送给每个所选群组的消息",
+    "delay": "群组间隔",
+    "delaySeconds": "{{n}} 秒",
+    "warning": "短时间内向大量群组发送相同消息可能导致 WhatsApp 号码被限制。名单较长时请使用更长的间隔。",
+    "send": "发送到 {{n}} 个群组",
+    "stop": "停止",
+    "confirm": "将此消息发送到 {{n}} 个群组？",
+    "results": "结果：共 {{total}} 个，已发送 {{sent}}，失败 {{failed}}",
+    "doneTitle": "群发已完成",
+    "doneAll": "已发送到 {{n}} 个群组",
+    "doneSome": "已发送 {{sent}}，失败或跳过 {{failed}}",
+    "maxGroups": "每次群发最多 {{n}} 个群组。",
+    "background": "群发在服务器上运行，关闭此标签页后仍会继续。重新打开此页面可查看进度。",
+    "started": "群发已开始",
+    "startedBody": "正在后台发送。",
+    "startFailed": "无法开始群发",
+    "stopFailed": "无法停止群发",
+    "clear": "清除结果"
+  },
+  "settings": {
+    "title": "设置",
+    "subtitle": "回复中显示的姓名和聊天状态标签",
+    "usernameTitle": "用户名",
+    "usernameHelp": "你的姓名会添加到你在聊天页面发送的每条回复开头，方便客户知道是谁回复的。",
+    "username": "你的姓名",
+    "save": "保存",
+    "saved": "设置已保存",
+    "preview": "预览",
+    "previewText": "你好，有什么可以帮你？",
+    "tagsTitle": "状态标签",
+    "tagsHelp": "为聊天和群组添加状态和颜色标签，例如待处理或已完成。在聊天菜单中设置标签。",
+    "tagColor": "标签颜色",
+    "tagName": "标签名称",
+    "untitledTag": "未命名",
+    "removeTag": "移除标签",
+    "addTag": "添加标签",
+    "newTag": "新标签",
+    "resetTags": "恢复默认",
+    "browserOnly": "用户名和标签仅保存在此浏览器中，不会与其他电脑或用户共享。"
   }
 }

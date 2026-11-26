@@ -67,6 +67,8 @@
     "templates": "템플릿",
     "apiKeys": "API 키",
     "messageTester": "메시지 테스터",
+    "broadcast": "일괄 전송",
+    "settings": "설정",
     "infrastructure": "인프라",
     "plugins": "플러그인",
     "logs": "로그"
@@ -373,6 +375,9 @@
       "noDateHits": "그날 불러온 메시지 없음",
       "notLoaded": "이 채팅에 불러온 메시지보다 이전입니다. 채팅에서 위로 스크롤하면 이전 메시지를 불러옵니다.",
       "open": "채팅에서 검색"
+    },
+    "tags": {
+      "clear": "태그 제거"
     }
   },
   "errorBoundary": {
@@ -388,9 +393,7 @@
     "connecting": "연결하는 중...",
     "invalidKey": "잘못된 API 키입니다",
     "connectionError": "서버에 연결할 수 없습니다. 다시 시도해 주세요.",
-    "help": "도움이 필요하신가요?",
-    "viewDocs": "문서 보기",
-    "footer": "Yudhi Armyndharis와 Business Advisor CRM 커뮤니티가 ❤️로 만들었습니다",
+    "footer": "Developed by Alpha Eye Technologies Pvt Ltd",
     "version": "v{{version}} · {{date}}"
   },
   "dashboard": {
@@ -1477,5 +1480,58 @@
       "current": "현재 세션"
     },
     "loading": "검색하는 중…"
+  },
+  "broadcast": {
+    "title": "일괄 전송",
+    "subtitle": "여러 WhatsApp 그룹에 메시지 하나를 보냅니다",
+    "noSession": "연결된 세션이 없습니다. 먼저 세션을 시작하세요.",
+    "session": "세션",
+    "groups": "그룹",
+    "reload": "새로고침",
+    "search": "그룹 검색",
+    "selectAll": "표시된 항목 모두 선택",
+    "loading": "그룹을 불러오는 중...",
+    "loadFailed": "그룹을 불러오지 못했습니다.",
+    "noGroups": "그룹이 없습니다.",
+    "message": "메시지",
+    "messagePlaceholder": "선택한 모든 그룹에 보낼 메시지를 입력하세요",
+    "delay": "그룹 간 간격",
+    "delaySeconds": "{{n}}초",
+    "warning": "같은 메시지를 많은 그룹에 빠르게 보내면 WhatsApp 번호가 제한될 수 있습니다. 목록이 길면 간격을 더 길게 설정하세요.",
+    "send": "{{n}}개 그룹에 보내기",
+    "stop": "중지",
+    "confirm": "이 메시지를 {{n}}개 그룹에 보낼까요?",
+    "results": "결과: 전체 {{total}} 중 {{sent}} 전송, {{failed}} 실패",
+    "doneTitle": "일괄 전송 완료",
+    "doneAll": "{{n}}개 그룹에 전송했습니다",
+    "doneSome": "{{sent}} 전송, {{failed}} 실패 또는 건너뜀",
+    "maxGroups": "일괄 전송당 최대 {{n}}개 그룹.",
+    "background": "일괄 전송은 서버에서 실행되므로 이 탭을 닫아도 계속됩니다. 진행 상황은 이 페이지를 다시 열어 확인하세요.",
+    "started": "일괄 전송 시작됨",
+    "startedBody": "백그라운드에서 전송 중입니다.",
+    "startFailed": "일괄 전송을 시작하지 못했습니다",
+    "stopFailed": "일괄 전송을 중지하지 못했습니다",
+    "clear": "결과 지우기"
+  },
+  "settings": {
+    "title": "설정",
+    "subtitle": "답장에 표시되는 이름과 채팅 상태 태그",
+    "usernameTitle": "사용자 이름",
+    "usernameHelp": "채팅 페이지에서 보내는 모든 답장 맨 앞에 이름이 붙어 고객이 누가 답했는지 알 수 있습니다.",
+    "username": "내 이름",
+    "save": "저장",
+    "saved": "설정이 저장되었습니다",
+    "preview": "미리보기",
+    "previewText": "안녕하세요, 무엇을 도와드릴까요?",
+    "tagsTitle": "상태 태그",
+    "tagsHelp": "채팅과 그룹에 대기 중, 완료 같은 상태와 색상 태그를 지정하세요. 채팅 메뉴에서 태그를 설정합니다.",
+    "tagColor": "태그 색상",
+    "tagName": "태그 이름",
+    "untitledTag": "이름 없음",
+    "removeTag": "태그 제거",
+    "addTag": "태그 추가",
+    "newTag": "새 태그",
+    "resetTags": "기본값으로 재설정",
+    "browserOnly": "사용자 이름과 태그는 이 브라우저에만 저장되며 다른 컴퓨터나 사용자와 공유되지 않습니다."
   }
 }

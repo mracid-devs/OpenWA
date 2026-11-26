@@ -15,6 +15,7 @@ const SAME_EVERYWHERE = new Set([
   'common.appName',
   'common.url',
   'nav.webhooks',
+  'login.footer',
   'webhooks.title',
   'infrastructure.database.sqlite',
   'infrastructure.database.postgres',

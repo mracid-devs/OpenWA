@@ -3,6 +3,7 @@ import { useQuery, useQueryClient, type QueryClient } from '@tanstack/react-quer
 import { Trans, useTranslation } from 'react-i18next';
 import { nextReconnectState } from '../utils/reconnectState';
 import { setChatTag, useOperatorSettings } from '../utils/operatorSettings';
+import { useOperatorProfile } from '../hooks/useOperatorProfile';
 import { applyIncomingToChatList, promoteChatWithSnippet } from '../utils/chatList';
 import {
   applyChatListFilter,
@@ -217,6 +218,8 @@ export function Chats() {
   const { error: showErrorToast, warning: showWarningToast, success: showSuccessToast } = useToastActions();
   const { canWrite, engineType } = useRole();
   const operator = useOperatorSettings();
+  // Loads the operator name from the server so replies carry it; a key with no name yet sends them as typed.
+  useOperatorProfile();
 
   // Sessions list & active session
   // Every listed session, ready or not: the switcher shows the others with their state.

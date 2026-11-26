@@ -43,3 +43,13 @@ test('text colour contrasts with the tag colour', () => {
   assert.equal(readableTextColor('#ffffff'), '#111827');
   assert.equal(readableTextColor('#000000'), '#ffffff');
 });
+
+test('the name the server holds replaces the local copy, and null clears it', async () => {
+  const { syncUsername, getOperatorSettings } = await import('./operatorSettings.ts');
+  syncUsername('Viraj');
+  assert.equal(getOperatorSettings().username, 'Viraj');
+  assert.equal(prefixWithUsername('Hi'), '*Viraj:* Hi');
+  syncUsername(null);
+  assert.equal(getOperatorSettings().username, '');
+  assert.equal(prefixWithUsername('Hi'), 'Hi');
+});

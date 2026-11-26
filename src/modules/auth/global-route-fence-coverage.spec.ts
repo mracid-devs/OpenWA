@@ -41,6 +41,11 @@ const ALLOWLIST = new Map<string, string>([
     'browser-session.controller.ts :: createSession',
     'exchanges the calling key header for a browser session bound to the same key scope; no resource access',
   ],
+  ['operator.controller.ts :: me', 'reads only the calling key own display name'],
+  [
+    'operator.controller.ts :: setMe',
+    'sets only the calling key own display name (locked once set; an administrator changes it through the fenced routes)',
+  ],
   [
     'browser-session.controller.ts :: getSession',
     'self-validation of the active browser session or calling key; no resource access',

@@ -7453,6 +7453,38 @@ dispatches the stored row).
 
 **Errors:** `400` an encoded NUL (`%00`) in the path or query, or a JSON body that does not parse · `401` signature verification failed (missing, stale, or wrong secret) · `403` `GET` verification challenge failed on a route that declares `challenge` (`verifyToken` mismatch) · `404` unknown pluginId/instanceId, or no such claimed route · `413` body over the route's `maxBodyBytes` · `415` a body in a content type no parser reads (only `application/json` and `application/x-www-form-urlencoded` are read) · `429` rate limit: the per-instance bucket (`INGRESS_INSTANCE_LIMIT`, counted only for deliveries that pass signature verification) or the per-client-IP bucket (`INGRESS_IP_LIMIT`), both per `INGRESS_INSTANCE_TTL`; the global per-IP tiers skip this route, so these two are its bounds, and `Retry-After-instance` / `Retry-After-ingress-ip` names the one that shed the request, alongside a plain `Retry-After` carrying the same delay · `503` a route that declares a response contract, while its plugin is still being restored after startup or when its `session-alive` preflight finds the bound session without a running engine or with a failed one (a session that is starting, reconnecting, waiting for a QR scan, or disconnected but still loaded is answered with the route's ack and queued): the delivery is not persisted, so the provider's retry is treated as a new delivery, and `Retry-After` carries the delay
 
+### 6.4.18 Operator names & portal activity log
+
+The dashboard signs each reply with the sender's name (`*Viraj:* Hello`). The name belongs to the API key: the key chooses it **once**, and from then on only an **ADMIN** key can change it. Separately, an administrator can mirror portal activity (dashboard sign-ins and sign-outs, name changes, API key and session changes, failed sign-in attempts, infrastructure changes) to one WhatsApp group through one session. The two tables behind this, `operator_profiles` and `portal_log_settings`, are not part of the data export.
+
+#### GET /api/operator/me
+
+The name the calling key signs replies with. **Auth:** any valid API key · **Response** `200` — `{ "apiKeyId": "…", "name": "Viraj" | null, "locked": true, "canChange": false }`. `locked` is true once a name exists; `canChange` is true while no name is set, and always for an ADMIN key.
+
+#### PUT /api/operator/me
+
+Set the calling key's name (`{ "name": "Viraj" }`, 1–40 characters, no `* _ ~ \`` or control characters). **Auth:** any valid API key · `200`with the same body as`GET /me`; `400`for an invalid name;`403`when a name is already set and the key is not ADMIN. Each change is audited as`operator_name_changed`.
+
+#### GET /api/operator/profiles
+
+Every API key with the name it signs replies with (`name` is `null` until it chooses one). **Auth:** API key (ADMIN, unscoped) · **Response** `200` — array of `{ apiKeyId, apiKeyName, name, updatedAt }`.
+
+#### PUT /api/operator/profiles/:apiKeyId
+
+Change the name of any key (`{ "name": "…" }`). **Auth:** API key (ADMIN, unscoped) · `200`, `400` for an invalid name, or `404` for an unknown key.
+
+#### GET /api/operator/portal-log
+
+Where portal activity is mirrored. **Auth:** API key (ADMIN, unscoped) · **Response** `200` — `{ "enabled": false, "sessionId": null, "groupId": null, "groupName": null }`.
+
+#### PUT /api/operator/portal-log
+
+Choose the session and the WhatsApp group (`groupId` ends in `@g.us`) and turn the mirror on or off. **Auth:** API key (ADMIN, unscoped) · `200` with the saved settings; `400` when `enabled` is true without a session and a group; `404` for an unknown session. Audited as `portal_log_config_updated`. Lines are posted one at a time, 1.5 s apart, with at most 100 waiting; a failed sign-in is reported once per client address every five minutes.
+
+#### POST /api/operator/portal-log/test
+
+Post a test line to the saved group. **Auth:** API key (ADMIN, unscoped) · `200` `{ "sent": true }`, or `400` while no group is saved.
+
 ## 6.5 Real-time API (WebSocket)
 
 Live events are delivered over a **Socket.IO** connection (not a raw WebSocket). The server mounts a single Socket.IO namespace, **`/events`**, on the same port as the REST API. There are no REST routes in this module.

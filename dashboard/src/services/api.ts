@@ -1327,6 +1327,50 @@ export const apiKeyApi = {
 };
 
 // =============================================================================
+// Operator names + WhatsApp activity log
+// =============================================================================
+
+export interface OperatorMe {
+  apiKeyId: string;
+  /** The name replies are signed with; null until the key has chosen one. */
+  name: string | null;
+  /** A name is set: from now on only an administrator can change it. */
+  locked: boolean;
+  canChange: boolean;
+}
+
+export interface OperatorProfileRow {
+  apiKeyId: string;
+  apiKeyName?: string;
+  name: string | null;
+  updatedAt?: string;
+}
+
+export interface PortalLogConfig {
+  enabled: boolean;
+  sessionId: string | null;
+  groupId: string | null;
+  groupName: string | null;
+}
+
+export const operatorApi = {
+  me: () => request<OperatorMe>('/operator/me'),
+  setMe: (name: string) => request<OperatorMe>('/operator/me', { method: 'PUT', body: JSON.stringify({ name }) }),
+  // Admin only below.
+  profiles: () => request<OperatorProfileRow[]>('/operator/profiles'),
+  setFor: (apiKeyId: string, name: string) =>
+    request<OperatorMe>(`/operator/profiles/${enc(apiKeyId)}`, { method: 'PUT', body: JSON.stringify({ name }) }),
+  getPortalLog: () => request<PortalLogConfig>('/operator/portal-log'),
+  setPortalLog: (data: {
+    enabled: boolean;
+    sessionId?: string | null;
+    groupId?: string | null;
+    groupName?: string | null;
+  }) => request<PortalLogConfig>('/operator/portal-log', { method: 'PUT', body: JSON.stringify(data) }),
+  testPortalLog: () => request<{ sent: boolean }>('/operator/portal-log/test', { method: 'POST' }),
+};
+
+// =============================================================================
 // Audit/Logs API
 // =============================================================================
 

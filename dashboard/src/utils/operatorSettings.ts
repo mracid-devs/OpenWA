@@ -114,8 +114,10 @@ export function useOperatorSettings(): OperatorSettings {
   return useSyncExternalStore(subscribe, read, read);
 }
 
-export function setUsername(username: string) {
-  write({ ...read(), username: username.trim().slice(0, USERNAME_MAX) });
+/** The server owns the name (it is locked once set); this keeps the copy the reply prefix reads in step with it. */
+export function syncUsername(username: string | null) {
+  const next = (username ?? '').trim().slice(0, USERNAME_MAX);
+  if (read().username !== next) write({ ...read(), username: next });
 }
 
 export function setTags(tags: ChatTag[]) {

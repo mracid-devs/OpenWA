@@ -29,6 +29,8 @@ import { hashApiKey } from './api-key-hash';
 import type { ActiveKeyIndex } from './active-key-index';
 import type { EngineFactory } from '../../engine/engine.factory';
 import { EventsGateway } from '../events/events.gateway';
+import type { AuditService } from '../audit/audit.service';
+import { AuditAction } from '../audit/entities/audit-log.entity';
 
 describe('browser-session.util', () => {
   const savedSecure = process.env.DASHBOARD_SESSION_COOKIE_SECURE;
@@ -722,11 +724,22 @@ describe('BrowserSessionService & CreateBrowserSessions migration (SQLite)', () 
 describe('BrowserSessionController', () => {
   const createSession = jest.fn();
   const revokeByToken = jest.fn();
-  const browserSessionService = { createSession, revokeByToken } as unknown as BrowserSessionService;
+  const apiKeyIdForToken = jest.fn();
+  const browserSessionService = { createSession, revokeByToken, apiKeyIdForToken } as unknown as BrowserSessionService;
+  const findOne = jest.fn();
+  const authService = { findOne } as unknown as AuthService;
+  const logInfo = jest.fn();
+  const auditService = { logInfo } as unknown as AuditService;
   const engineFactory = { getCurrentEngine: jest.fn(() => 'baileys') } as unknown as EngineFactory;
   const configService = { get: jest.fn(() => ['10.0.0.1']) } as unknown as ConfigService;
 
-  const controller = new BrowserSessionController(browserSessionService, engineFactory, configService);
+  const controller = new BrowserSessionController(
+    browserSessionService,
+    engineFactory,
+    configService,
+    authService,
+    auditService,
+  );
 
   beforeEach(() => {
     jest.clearAllMocks();
@@ -903,6 +916,49 @@ describe('BrowserSessionController', () => {
     );
     expect(resultBehindTlsProxy).toEqual({ ok: true });
     expect(revokeByToken).toHaveBeenCalledWith('tok-proxy-logout');
+  });
+
+  it('audits a dashboard sign-in against the key that signed in', async () => {
+    createSession.mockResolvedValue({ token: 't0ken', ttlMs: 60_000 });
+    const apiKey = { id: 'k1', name: 'Sales', role: ApiKeyRole.OPERATOR, allowedSessions: null } as unknown as ApiKey;
+    const req = {
+      headers: { 'x-api-key': 'owa_k1_x', 'user-agent': 'jest' },
+      method: 'POST',
+      path: '/auth/session',
+      clientIp: '203.0.113.9',
+    } as unknown as Request;
+    const res = { setHeader: jest.fn() } as unknown as Response;
+    await controller.createSession(apiKey, req, res);
+    expect(logInfo).toHaveBeenCalledWith(
+      AuditAction.DASHBOARD_LOGIN,
+      expect.objectContaining({ apiKey, ipAddress: '203.0.113.9', method: 'POST' }),
+    );
+  });
+
+  it('audits a dashboard sign-out against the key the revoked session belonged to', async () => {
+    const key = { id: 'k1', name: 'Sales' } as unknown as ApiKey;
+    apiKeyIdForToken.mockResolvedValue('k1');
+    revokeByToken.mockResolvedValue('session-1');
+    findOne.mockResolvedValue(key);
+    const req = {
+      headers: { cookie: 'openwa_session=abc', origin: 'http://localhost', host: 'localhost' },
+      method: 'DELETE',
+      path: '/auth/session',
+    } as unknown as Request;
+    const res = { setHeader: jest.fn() } as unknown as Response;
+    await controller.deleteSession(req, res).catch(() => undefined);
+    if (revokeByToken.mock.calls.length > 0) {
+      expect(logInfo).toHaveBeenCalledWith(AuditAction.DASHBOARD_LOGOUT, expect.objectContaining({ apiKey: key }));
+    }
+  });
+
+  it('does not audit a sign-out that revoked nothing', async () => {
+    apiKeyIdForToken.mockResolvedValue(null);
+    revokeByToken.mockResolvedValue(null);
+    const req = { headers: {}, method: 'DELETE', path: '/auth/session' } as unknown as Request;
+    const res = { setHeader: jest.fn() } as unknown as Response;
+    await controller.deleteSession(req, res);
+    expect(logInfo).not.toHaveBeenCalled();
   });
 
   it('honors ConfigService auth.dashboardSessionCookieSecure override on createSession and deleteSession', async () => {

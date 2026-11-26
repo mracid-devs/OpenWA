@@ -157,6 +157,15 @@ export class BrowserSessionService implements OnApplicationBootstrap, OnModuleDe
     return this.verifySessionAndApiKey(session, clientIp, sessionId, opts);
   }
 
+  /** The API key a browser session cookie belongs to, or null for an unknown token (read before it is revoked). */
+  async apiKeyIdForToken(rawToken: string): Promise<string | null> {
+    const trimmed = rawToken?.trim();
+    if (!trimmed) return null;
+    const tokenHash = hashBrowserSessionToken(trimmed, process.env.API_KEY_PEPPER);
+    const session = await this.sessionRepository.findOne({ where: { tokenHash } });
+    return session?.apiKeyId ?? null;
+  }
+
   async revokeByToken(rawToken: string): Promise<string | null> {
     const trimmed = rawToken?.trim();
     if (!trimmed) return null;

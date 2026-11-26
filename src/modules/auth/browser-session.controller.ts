@@ -1,3 +1,6 @@
+import { AuthService } from './auth.service';
+import { AuditService } from '../audit/audit.service';
+import { AuditAction } from '../audit/entities/audit-log.entity';
 import { Controller, Delete, Get, HttpCode, HttpStatus, Post, Req, Res, UnauthorizedException } from '@nestjs/common';
 import { ApiHeader, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { ConfigService } from '@nestjs/config';
@@ -23,6 +26,8 @@ export class BrowserSessionController {
     private readonly browserSessionService: BrowserSessionService,
     private readonly engineFactory: EngineFactory,
     private readonly configService: ConfigService,
+    private readonly authService: AuthService,
+    private readonly auditService: AuditService,
   ) {}
 
   @Post('session')
@@ -55,6 +60,14 @@ export class BrowserSessionController {
     const secure = isSecureCookieRequest(req, trustedProxies, secureOverride);
     res.setHeader('Set-Cookie', formatSessionSetCookie(token, Math.floor(ttlMs / 1000), secure));
     res.setHeader('Cache-Control', 'no-store');
+    // The sign-in itself is the event the portal activity log reports; the audit write is best-effort.
+    await this.auditService.logInfo(AuditAction.DASHBOARD_LOGIN, {
+      apiKey,
+      ipAddress: (req as Request & { clientIp?: string }).clientIp ?? undefined,
+      userAgent: req.headers?.['user-agent'],
+      method: req.method,
+      path: req.path,
+    });
     return {
       valid: true,
       role: apiKey.role,
@@ -100,7 +113,21 @@ export class BrowserSessionController {
     const token = extractBrowserSessionCookie(req.headers?.cookie);
     if (token) {
       assertBrowserCsrfSafe(req, trustedProxies);
-      await this.browserSessionService.revokeByToken(token);
+      // Read whose session this is before it is revoked, so the sign-out can be attributed.
+      const apiKeyId = await this.browserSessionService.apiKeyIdForToken(token);
+      const revoked = await this.browserSessionService.revokeByToken(token);
+      if (revoked && apiKeyId) {
+        const key = await this.authService.findOne(apiKeyId).catch(() => undefined);
+        if (key) {
+          await this.auditService.logInfo(AuditAction.DASHBOARD_LOGOUT, {
+            apiKey: key,
+            ipAddress: (req as Request & { clientIp?: string }).clientIp ?? undefined,
+            userAgent: req.headers?.['user-agent'],
+            method: req.method,
+            path: req.path,
+          });
+        }
+      }
     }
     const secureOverride = this.configService.get<boolean | undefined>('auth.dashboardSessionCookieSecure');
     const secure = isSecureCookieRequest(req, trustedProxies, secureOverride);

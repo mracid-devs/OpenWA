@@ -121,6 +121,7 @@ const dataConnection = (): DataSource =>
       join(repoRoot, 'src/modules/integration/**/*.entity{.ts,.js}'),
       join(repoRoot, 'src/modules/status-store/**/*.entity{.ts,.js}'),
       join(repoRoot, 'src/modules/automation/**/*.entity{.ts,.js}'),
+      join(repoRoot, 'src/modules/operator/**/*.entity{.ts,.js}'),
     ],
     migrations: importMigrations(join(repoRoot, 'src/database/migrations')) as never,
   });

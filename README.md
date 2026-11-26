@@ -311,3 +311,15 @@ The containers start again automatically after a VPS reboot (`restart: unless-st
 - **The build is killed or stalls:** the VPS is out of memory. Add swap (Step 3) or build on a bigger machine temporarily.
 - **A WhatsApp session will not start:** read the logs with `docker compose logs --tail 100 openwa-api`. Make sure `ENGINE_TYPE=baileys` is set in `.env`.
 - More help: [docs/12-troubleshooting-faq.md](docs/12-troubleshooting-faq.md).
+
+---
+
+## Disclaimer
+
+Business Advisor CRM is built on the open-source OpenWA project. It is an independent project and is not affiliated, associated, authorized, endorsed by, or in any way officially connected with Meta Platforms, Inc., WhatsApp LLC, or any of their subsidiaries or affiliates. "WhatsApp" and related names, marks, emblems, and images are registered trademarks of their respective owners.
+
+Use it at your own risk; you are responsible for complying with WhatsApp's terms and the law where you operate.
+
+## License
+
+MIT. See [LICENSE](LICENSE).

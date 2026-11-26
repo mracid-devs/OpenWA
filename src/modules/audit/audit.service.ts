@@ -87,6 +87,30 @@ export class AuditService implements OnModuleInit, OnModuleDestroy {
     }
   }
 
+  /**
+   * Observers of every audit row that was written (the portal activity log mirrors a selection of them to
+   * WhatsApp). A listener runs after the row is stored, never delays or fails the audited operation, and
+   * is expected not to throw; one that does is logged and skipped.
+   */
+  private readonly listeners = new Set<(entry: AuditLog) => void>();
+
+  addListener(listener: (entry: AuditLog) => void): () => void {
+    this.listeners.add(listener);
+    return () => {
+      this.listeners.delete(listener);
+    };
+  }
+
+  private notifyListeners(entry: AuditLog): void {
+    for (const listener of this.listeners) {
+      try {
+        listener(entry);
+      } catch (error) {
+        this.logger.error('Audit listener failed', error instanceof Error ? error.stack : String(error));
+      }
+    }
+  }
+
   async log(
     action: AuditAction,
     context: AuditContext = {},
@@ -125,7 +149,9 @@ export class AuditService implements OnModuleInit, OnModuleDestroy {
     // Audit logging is best-effort: a failed insert must never turn a succeeded operation into a 500
     // (callers await this after the primary side-effect). Log and swallow.
     try {
-      return await this.auditRepository.save(auditLog);
+      const saved = await this.auditRepository.save(auditLog);
+      this.notifyListeners(saved);
+      return saved;
     } catch (error) {
       this.logger.error(
         `Failed to write audit log for ${String(action)}`,

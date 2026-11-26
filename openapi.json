@@ -65,6 +65,10 @@
                 "api_key_auth_failed",
                 "rate_limit_exceeded",
                 "queue_board_mutated",
+                "dashboard_login",
+                "dashboard_logout",
+                "operator_name_changed",
+                "portal_log_config_updated",
                 "session_created",
                 "session_started",
                 "session_stopped",
@@ -16232,6 +16236,369 @@
         ]
       }
     },
+    "/api/operator/me": {
+      "get": {
+        "operationId": "OperatorController_me",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperatorMeResponseDto"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key is missing, unknown, revoked, or expired",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The API key's role, session or chat scope, or IP allow-list does not allow this operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "summary": "The name this key signs its replies with, and whether it can still be changed",
+        "tags": [
+          "operator"
+        ]
+      },
+      "put": {
+        "description": "Open the first time; after that only an administrator can change it.",
+        "operationId": "OperatorController_setMe",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SetOperatorNameDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperatorMeResponseDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The body is malformed, fails validation, or carries a field the DTO does not declare",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key is missing, unknown, revoked, or expired",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "A name is already set and only an administrator can change it. Also returned when the API key's role, session or chat scope, or IP allow-list does not allow this operation.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Set the name this key signs its replies with",
+        "tags": [
+          "operator"
+        ]
+      }
+    },
+    "/api/operator/profiles": {
+      "get": {
+        "operationId": "OperatorController_profiles",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/OperatorProfileResponseDto"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key is missing, unknown, revoked, or expired",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The API key's role, session or chat scope, or IP allow-list does not allow this operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Every API key with the name it signs replies with (admin only)",
+        "tags": [
+          "operator"
+        ]
+      }
+    },
+    "/api/operator/profiles/{apiKeyId}": {
+      "put": {
+        "operationId": "OperatorController_setFor",
+        "parameters": [
+          {
+            "name": "apiKeyId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SetOperatorNameDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperatorMeResponseDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The body is malformed, fails validation, or carries a field the DTO does not declare",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key is missing, unknown, revoked, or expired",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The API key's role, session or chat scope, or IP allow-list does not allow this operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Change the name of any API key (admin only)",
+        "tags": [
+          "operator"
+        ]
+      }
+    },
+    "/api/operator/portal-log": {
+      "get": {
+        "operationId": "OperatorController_getPortalLog",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PortalLogResponseDto"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key is missing, unknown, revoked, or expired",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The API key's role, session or chat scope, or IP allow-list does not allow this operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Where portal activity is mirrored in WhatsApp (admin only)",
+        "tags": [
+          "operator"
+        ]
+      },
+      "put": {
+        "operationId": "OperatorController_setPortalLog",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdatePortalLogDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PortalLogResponseDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The body is malformed, fails validation, or carries a field the DTO does not declare",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key is missing, unknown, revoked, or expired",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The API key's role, session or chat scope, or IP allow-list does not allow this operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Choose the WhatsApp group that mirrors portal activity (admin only)",
+        "tags": [
+          "operator"
+        ]
+      }
+    },
+    "/api/operator/portal-log/test": {
+      "post": {
+        "operationId": "OperatorController_testPortalLog",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PortalLogTestResponseDto"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key is missing, unknown, revoked, or expired",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The API key's role, session or chat scope, or IP allow-list does not allow this operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Post a test line to the activity log group (admin only)",
+        "tags": [
+          "operator"
+        ]
+      }
+    },
     "/api/sessions/{sessionId}/catalog": {
       "get": {
         "operationId": "CatalogController_getCatalog",
@@ -19022,6 +19389,10 @@
     {
       "name": "media",
       "description": "Media conversion"
+    },
+    {
+      "name": "operator",
+      "description": "Operator names on replies and the WhatsApp portal activity log"
     }
   ],
   "servers": [
@@ -26049,6 +26420,133 @@
           "base64",
           "mimetype",
           "bytes"
+        ]
+      },
+      "OperatorMeResponseDto": {
+        "type": "object",
+        "properties": {
+          "apiKeyId": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "locked": {
+            "type": "boolean",
+            "description": "A name is set: from now on only an administrator can change it"
+          },
+          "canChange": {
+            "type": "boolean",
+            "description": "This key may change the name now"
+          }
+        },
+        "required": [
+          "apiKeyId",
+          "name",
+          "locked",
+          "canChange"
+        ]
+      },
+      "SetOperatorNameDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The name that leads the replies sent with this key (1-40 characters, no line breaks)",
+            "example": "Viraj",
+            "maxLength": 40
+          }
+        },
+        "required": [
+          "name"
+        ]
+      },
+      "OperatorProfileResponseDto": {
+        "type": "object",
+        "properties": {
+          "apiKeyId": {
+            "type": "string"
+          },
+          "apiKeyName": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "apiKeyId",
+          "name"
+        ]
+      },
+      "PortalLogResponseDto": {
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "type": "boolean"
+          },
+          "sessionId": {
+            "type": "string",
+            "nullable": true
+          },
+          "groupId": {
+            "type": "string",
+            "nullable": true
+          },
+          "groupName": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "required": [
+          "enabled",
+          "sessionId",
+          "groupId",
+          "groupName"
+        ]
+      },
+      "UpdatePortalLogDto": {
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "description": "Mirror portal activity to the WhatsApp group"
+          },
+          "sessionId": {
+            "type": "object",
+            "description": "The session that posts to the group",
+            "nullable": true
+          },
+          "groupId": {
+            "type": "object",
+            "description": "The group chat id (…@g.us)",
+            "nullable": true
+          },
+          "groupName": {
+            "type": "object",
+            "description": "The group name, shown back in Settings",
+            "nullable": true
+          }
+        },
+        "required": [
+          "enabled"
+        ]
+      },
+      "PortalLogTestResponseDto": {
+        "type": "object",
+        "properties": {
+          "sent": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "sent"
         ]
       },
       "CatalogDto": {

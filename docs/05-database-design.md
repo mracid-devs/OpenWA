@@ -1026,7 +1026,8 @@ src/database/migrations/           # data connection (pluggable)
 ├── 1791600000000-RepairSqliteMessageFts.ts   # rebuilds the SQLite full-text index when it no longer matches messages
 ├── 1791700000000-AddChatStateDeletedAt.ts   # chat_states.deletedAt (when WhatsApp deleted the chat)
 ├── 1791800000000-AddStatusMediaPathIndex.ts   # partial index on status_updates.mediaPath (orphan sweep)
-└── 1791900000000-AddHighVolumeQueryIndexes.ts   # composite and retention indexes across messages, webhook_delivery_failures, message_batches, and integration_delivery_failures
+├── 1791900000000-AddHighVolumeQueryIndexes.ts   # composite and retention indexes across messages, webhook_delivery_failures, message_batches, and integration_delivery_failures
+└── 1792100000000-AddOperatorAndPortalLog.ts   # operator_profiles (name per API key, locked once set) + portal_log_settings (WhatsApp activity-log target)
 ```
 
 > [!NOTE]

@@ -466,4 +466,8 @@ export const EXPORT_TABLES: AnyExportTable[] = [
 export const EXPORT_TABLE_EXCLUSIONS: Readonly<Record<string, string>> = {
   // Claims expire within 24 hours; a restored key would only block or replay a send it never saw.
   send_idempotency_keys: 'short-lived Idempotency-Key claims (24 h TTL), meaningless after a restore',
+  // Both belong to the dashboard's operator settings and are keyed by API key ids, which live in the main
+  // database and are not part of this export, so a restored row would point at keys that may not exist.
+  operator_profiles: 'operator display names keyed by API key id (main database); re-set from Settings after a restore',
+  portal_log_settings: 'the WhatsApp activity-log target (session + group ids); re-select it in Settings after a restore',
 };

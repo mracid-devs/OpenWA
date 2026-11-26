@@ -16,6 +16,13 @@ export enum AuditAction {
   // Queue dashboard (Bull Board) events
   QUEUE_BOARD_MUTATED = 'queue_board_mutated',
 
+  // Dashboard sign-in and sign-out (browser sessions), and who is named on the replies they send
+  DASHBOARD_LOGIN = 'dashboard_login',
+  DASHBOARD_LOGOUT = 'dashboard_logout',
+  OPERATOR_NAME_CHANGED = 'operator_name_changed',
+  // Where (and whether) portal activity is mirrored to a WhatsApp group
+  PORTAL_LOG_CONFIG_UPDATED = 'portal_log_config_updated',
+
   // Session events
   SESSION_CREATED = 'session_created',
   SESSION_STARTED = 'session_started',

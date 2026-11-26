@@ -39,6 +39,7 @@ import { MediaModule } from './modules/media/media.module';
 import { StatusStoreModule } from './modules/status-store/status-store.module';
 import { ChatMediaModule } from './modules/chat-media/chat-media.module';
 import { AutomationModule } from './modules/automation/automation.module';
+import { OperatorModule } from './modules/operator/operator.module';
 import { TakeoverModule } from './modules/takeover/takeover.module';
 import { CatalogModule } from './modules/catalog/catalog.module';
 import { HooksModule } from './core/hooks';
@@ -161,6 +162,7 @@ if (dashboardServingEnabled && dashboardBuildPresent) {
             __dirname + '/modules/integration/**/*.entity{.ts,.js}',
             __dirname + '/modules/status-store/**/*.entity{.ts,.js}',
             __dirname + '/modules/automation/**/*.entity{.ts,.js}',
+            __dirname + '/modules/operator/**/*.entity{.ts,.js}',
           ],
           migrations: [__dirname + '/database/migrations/*{.ts,.js}'],
           logging: configService.get<boolean>('dataDatabase.logging', false),
@@ -308,6 +310,7 @@ if (dashboardServingEnabled && dashboardBuildPresent) {
     StatusStoreModule, // Phase 3: inbound status/story TTL store (24h purge + media persistence)
     ChatMediaModule, // opt-in chat-media archive (retention purge + orphan sweep)
     AutomationModule, // single-message autoreply rules, evaluated on the inbound dispatch
+    OperatorModule, // operator names on replies + the WhatsApp group that mirrors portal activity
     TakeoverModule, // adopts sessions whose holder's lease lapsed (crashed peer / recreated node)
     CatalogModule, // Phase 3: Catalog API (WhatsApp Business)
     PluginsApiModule, // Phase 5: Plugins API
